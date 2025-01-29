@@ -70,14 +70,3 @@ export default CartItems
 
 
 
-{/* <div>
-        <div className="cartitems-formart">
-            <img src="" alt="" className='carticon-product-icon' />
-            <p></p>
-            <p></p>
-            <button className='cartitems-quantity'></button>
-            <p></p>
-            <img src={remove_icon} onClick={()=>{removeFromCart()}} alt="" />
-        </div>
-        <hr/>
-       </div> */}

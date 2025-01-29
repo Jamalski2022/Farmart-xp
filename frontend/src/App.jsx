@@ -12,6 +12,7 @@ import men_banner from './Components/assets/antony.jpg'
 import women_banner from './Components/assets/messii.jpg'
 import kid_banner from './Components/assets/riacharlison.jpg'
 import ShopContextProvider from './Context/ShopContext';
+import { ProtectedRoute } from './utils/ProtectedRoute';
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
           <Route path='/cows' element={<ShopCategory banner={kid_banner} category="cow"/>}/>
           
           <Route path='/product/:productId' element={<Product/>}/>
-          <Route path='/cart' element={<Cart/>}/>
+          <Route path='/cart' element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
           <Route path='/login' element={<LoginSignup/>}/>
 
 
