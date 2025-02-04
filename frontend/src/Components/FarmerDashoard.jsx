@@ -160,6 +160,8 @@ const FarmerDashboard = () => {
             name="description"
             value={currentAnimal.description}
             onChange={handleInputChange}
+            
+            
             placeholder="Description"
             className="p-2 border rounded"
             required

@@ -1,15 +1,16 @@
-
-
-// src/Components/CheckoutForm/CheckoutForm.jsx
 import React, { useState } from 'react';
-import { useCart } from '../Context/CartContext';
+import { useShop } from '../Context/ShopContext';
 import { orderAPI } from '../services/api';
 
 const CheckoutForm = () => {
-  const { state, dispatch } = useCart();
+  const { cartItems, clearCart } = useShop();
   const [phoneNumber, setPhoneNumber] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const getTotalAmount = () => {
+    return cartItems.reduce((total, item) => total + item.new_price * item.quantity, 0);
+  };
 
   const handleCheckout = async (e) => {
     e.preventDefault();
@@ -17,10 +18,11 @@ const CheckoutForm = () => {
     setError('');
 
     try {
-      const orderResponse = await orderAPI.createOrder({
-        items: state.items.map(item => ({
+      const orderResponse = await orderAPI.create({
+        items: cartItems.map(item => ({
           animal_id: item.id,
-          quantity: item.quantity
+          quantity: item.quantity,
+          price: item.new_price
         }))
       });
 
@@ -30,7 +32,7 @@ const CheckoutForm = () => {
       });
 
       if (paymentResponse.data.message === 'Payment initiated') {
-        dispatch({ type: 'CLEAR_CART' });
+        clearCart();
         alert('Please check your phone to complete the M-Pesa payment');
       }
 
@@ -60,22 +62,23 @@ const CheckoutForm = () => {
 
         <div className="order-summary">
           <h3>Order Summary</h3>
-          {state.items.map(item => (
+          {cartItems.map(item => (
             <div key={item.id} className="order-item">
               <span>{item.name}</span>
               <span>x{item.quantity}</span>
-              <span>${item.price * item.quantity}</span>
+              <span>${item.new_price * item.quantity}</span>
             </div>
           ))}
           <div className="total">
             <strong>Total:</strong>
-            <span>
-              ${state.items.reduce((total, item) => total + item.price * item.quantity, 0)}
-            </span>
+            <span>${getTotalAmount()}</span>
           </div>
         </div>
 
-        <button type="submit" disabled={loading || state.items.length === 0}>
+        <button 
+          type="submit" 
+          disabled={loading || cartItems.length === 0}
+        >
           {loading ? 'Processing...' : 'Pay with M-Pesa'}
         </button>
       </form>

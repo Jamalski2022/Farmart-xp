@@ -7,13 +7,13 @@ const Item = (props) => {
   const { addToCart } = useShop();
 
   const handleAddToCart = (e) => {
-    e.preventDefault(); // Prevent navigating to product page when clicking add to cart
+    e.preventDefault();
     addToCart({
       id: props.id,
       name: props.name,
       image: props.image,
       new_price: props.new_price,
-      old_price: props.old_price,
+      quantity: 1
     });
   };
 
