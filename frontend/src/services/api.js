@@ -1,71 +1,62 @@
-// src/services/api.js
+
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
-
-// Create axios instance with default config
+// Create base API instance
 const api = axios.create({
-    baseURL: API_URL,
+    baseURL: 'http://127.0.0.1:5000',
+    withCredentials: true,
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
     }
 });
 
-// Add token to requests if available
-api.interceptors.request.use((config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-});
-
-// Add an interceptor to handle errors
-api.interceptors.response.use(
-    response => response,
-    error => {
-        console.error('API Error:', error);
+// Request interceptor for adding auth token
+api.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('accessToken');
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => {
         return Promise.reject(error);
     }
 );
 
-export const authAPI = {
-    login: async (credentials) => {
-        const response = await api.post('/login', credentials);
-        if (response.data.access_token) {
-            localStorage.setItem('token', response.data.access_token);
-            localStorage.setItem('user', JSON.stringify(response.data.user));
+// Response interceptor for handling errors
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (error.response?.status === 401) {
+            localStorage.removeItem('accessToken');
+            // Redirect to login if needed
         }
-        return response.data;
-    },
-    
-    signup: async (userData) => {
-        const response = await api.post('/signup', userData);
-        return response.data;
-    },
-    
-    logout: () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        return Promise.reject(error);
     }
+);
+
+// Auth API
+export const authAPI = {
+    login: (credentials) => api.post('/api/login', credentials),
+    signup: (userData) => api.post('/api/signup', userData),
 };
 
-export const animalAPI = {
-    getAllAnimals: () => api.get('/animals'),
-    getAnimal: (id) => api.get(`/animals/${id}`),
-    addAnimal: (animalData) => api.post('/animals', animalData),
-    updateAnimal: (id, animalData) => api.put(`/animals/${id}`, animalData),
-    deleteAnimal: (id) => api.delete(`/animals/${id}`)
+// Animals API
+export const animalsAPI = {
+    getAll: () => api.get('/api/animals'),
+    getOne: (id) => api.get(`/api/animals/${id}`),
+    create: (data) => api.post('/api/animals', data),
+    update: (id, data) => api.put(`/api/animals/${id}`, data),
+    delete: (id) => api.delete(`/api/animals/${id}`),
 };
 
 export const orderAPI = {
-    createOrder: (orderData) => api.post('/orders', orderData),
-    getUserOrders: () => api.get('/orders'),
-    getOrder: (id) => api.get(`/orders/${id}`)
+    create: (orderData) => api.post('/api/orders', orderData),
+    getAll: () => api.get('/api/orders'),
+    getOne: (id) => api.get(`/api/orders/${id}`),
+    update: (id, data) => api.put(`/api/orders/${id}`, data),
+    delete: (id) => api.delete(`/api/orders/${id}`),
 };
 
-export const userAPI = {
-    getProfile: () => api.get('/profile'),
-    updateProfile: (userData) => api.put('/users/profile', userData),
-    getOrders: () => api.get('/orders')
-};
+export default api;

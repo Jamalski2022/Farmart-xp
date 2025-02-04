@@ -11,15 +11,18 @@ import Footer from './Components/Footer/Footer';
 import men_banner from './Components/assets/antony.jpg'
 import women_banner from './Components/assets/messii.jpg'
 import kid_banner from './Components/assets/riacharlison.jpg'
-import ShopContextProvider from './Context/ShopContext';
+import { ShopContextProvider } from './Context/ShopContext';
 import { ProtectedRoute } from './utils/ProtectedRoute';
+import { CartProvider } from './Context/CartContext';
+import  CheckoutForm   from './Components/CheckoutForm';  // adjust the path as needed
+import FarmerDashboard from './Components/FarmerDashoard';
 
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-      
+      <CartProvider>
         <ShopContextProvider>
         <BrowserRouter>
         <Navbar />
@@ -32,7 +35,9 @@ function App() {
           
           <Route path='/product/:productId' element={<Product/>}/>
           <Route path='/cart' element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
+          <Route path='/checkout' element={<ProtectedRoute><CheckoutForm/></ProtectedRoute>}/>
           <Route path='/login' element={<LoginSignup/>}/>
+          <Route path="/farmer/dashboard" element={<ProtectedRoute><FarmerDashboard/></ProtectedRoute>}/>
 
 
         </Routes>
@@ -42,6 +47,7 @@ function App() {
 
         </BrowserRouter>
         </ShopContextProvider>
+      </CartProvider>
       
       
     
