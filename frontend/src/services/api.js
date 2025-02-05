@@ -52,11 +52,11 @@ export const animalsAPI = {
 };
 
 export const orderAPI = {
-    create: (orderData) => api.post('/api/orders', orderData),
-    getAll: () => api.get('/api/orders'),
-    getOne: (id) => api.get(`/api/orders/${id}`),
-    update: (id, data) => api.put(`/api/orders/${id}`, data),
-    delete: (id) => api.delete(`/api/orders/${id}`),
+    create: (orderData) => api.post('/api/orders/', orderData),
+    getAll: () => api.get('/api/orders/'),
+    getOne: (id) => api.get(`/api/orders/${id}/`),
+    update: (id, data) => api.put(`/api/orders/${id}/`, data),
+    delete: (id) => api.delete(`/api/orders/${id}/`),
 };
 
 export default api;
