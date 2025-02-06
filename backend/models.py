@@ -32,7 +32,7 @@ class Animal(db.Model):
     category = db.Column(db.String(50), nullable=False)
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.Text)
-    image_url = db.Column(db.String(255))
+    image_url = db.Column(db.String(500))
 
     def to_dict(self):
         return {
