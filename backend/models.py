@@ -44,25 +44,6 @@ class Animal(db.Model):
             "image_url": self.image_url
         }
 
-# class Order(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-#     animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
-#     quantity = db.Column(db.Integer, nullable=False, default=1)
-#     total_price = db.Column(db.Float, nullable=False)
-
-#     user = db.relationship("User", backref="orders")
-#     animal = db.relationship("Animal", backref="orders")
-
-#     def to_dict(self):
-#         return {
-#             "id": self.id,
-#             "user_id": self.user_id,
-#             "animal_id": self.animal_id,
-#             "quantity": self.quantity,
-#             "total_price": self.total_price
-#         }
-
 
 class OrderStatus:
     PENDING = 'pending'
