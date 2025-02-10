@@ -323,7 +323,7 @@ app.config["JWT_COOKIE_SECURE"] = False  # Set to True in production
 
 CORS(app, supports_credentials=True, resources={
     r"/api/*": {
-        "origins": "http://localhost:5174",  # Allow only frontend
+        "origins":"http://localhost:5174",  # Allow only frontend
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": [
             "Content-Type", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"
