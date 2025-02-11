@@ -1,0 +1,366 @@
+/* Dashboard Container */
+.dashboard-container {
+    width: 100%;
+    max-width: 64rem;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #f0fff4;
+  }
+  
+  /* Tab Navigation */
+  .tab-buttons {
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .tab-button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    background-color: #48bb78; 
+    color: white;
+    /* ADDED: Smooth transition effect */
+    transition: background-color 0.3s ease;
+  }
+
+  .tab-button:hover {
+    background-color: #38a169;
+}
+  
+  .tab-button.active {
+    /* CHANGED: Darker green for active state */
+    background-color: #2f855a;
+    /* ADDED: Greenyellow accent */
+    color: greenyellow;
+  }
+  
+  /* Messages */
+  .error-message {
+        /* CHANGED: More vibrant error color */
+        color: #c53030;
+        margin-bottom: 1rem;
+        /* ADDED: Background and padding for better visibility */
+        background-color: #fff5f5;
+        padding: 0.5rem;
+        border-radius: 0.25rem
+  }
+  
+  .success-message {
+     /* CHANGED: Green success color */
+     color: #2f855a;
+     margin-bottom: 1rem;
+     /* ADDED: Background and padding */
+     background-color: #f0fff4;
+     padding: 0.5rem;
+     border-radius: 0.25rem;
+  }
+  
+  /* Form Styles */
+  .animal-form {
+    margin-bottom: 2rem;
+    /* ADDED: White background, padding, and shadow */
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea,
+  .form-file-input {
+    padding: 0.5rem;
+    /* CHANGED: Green border */
+    border: 1px solid #48bb78;
+    border-radius: 0.25rem;
+    /* ADDED: Light green background */
+    background-color: #f0fff4;
+  }
+  
+  .form-textarea {
+    min-height: 100px;
+  }
+  
+  .upload-status {
+    color: #3b82f6;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .submit-button,
+  .cancel-button {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  
+  .submit-button {
+     /* CHANGED: Green submit button */
+     background-color: #48bb78;
+     color: white;
+  }
+  
+  .submit-button:hover {
+     /* ADDED: Darker green on hover */
+     background-color: #38a169;
+  }
+  
+  .cancel-button {
+    background-color: #6b7280;
+    color: white;
+  }
+  
+  .cancel-button:hover {
+    background-color: #4b5563;
+  }
+  
+  /* Animals Grid */
+  .animals-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .animals-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .animal-card {
+       /* CHANGED: Green border */
+       border: 1px solid #48bb78;
+       padding: 1rem;
+       border-radius: 0.25rem;
+       /* ADDED: White background and shadow */
+       background-color: white;
+       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+       /* ADDED: Hover transform effect */
+       transition: transform 0.3s ease;
+  }
+
+  .animal-card:hover {
+    /* ADDED: Subtle scale and shadow on hover */
+    transform: scale(1.02);
+    box-shadow: 0 6px 8px rgba(72, 187, 120, 0.2);
+}
+  
+  .animal-image {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+    border: 3px solid greenyellow;
+  }
+  
+  .animal-name {
+    font-weight: 600;
+  }
+  
+  .animal-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .edit-button,
+  .delete-button {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    color: white;
+  }
+  
+  .edit-button {
+    background-color: #ecc94b;
+    color: #2d3748;
+  }
+  
+  .edit-button:hover {
+    background-color: #d97706;
+  }
+  
+  .delete-button {
+    /* CHANGED: Soft red delete button */
+    background-color: #f56565;
+    color: white;
+  }
+  
+  .delete-button:hover {
+    background-color: #dc2626;
+  }
+  
+  /* Orders Styles */
+  .orders-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .order-card {
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+  }
+  
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .order-title {
+    font-weight: 600;
+  }
+  
+  .order-date {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .order-total {
+    font-weight: 500;
+  }
+  
+  .order-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .accept-button,
+  .reject-button {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    color: white;
+  }
+  
+  .accept-button {
+    background-color: #10b981;
+  }
+  
+  .accept-button:hover {
+    background-color: #059669;
+  }
+  
+  .reject-button {
+    background-color: #ef4444;
+  }
+  
+  .reject-button:hover {
+    background-color: #dc2626;
+  }
+  
+  .status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+  
+  .status-badge.processing {
+    background-color: #bee3f8;
+    color: #2c5282;
+  }
+  
+  .status-badge.completed {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  
+  .status-badge.cancelled {
+    background-color: #fee2e2;
+    color: #991b1b;
+  }
+  
+  .status-badge.pending {
+    background-color: #f3f4f6;
+    color: #1f2937;
+  }
+  
+  .order-items {
+    margin-top: 1rem;
+  }
+  
+  .items-title {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  .items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9fafb;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+  }
+  
+  .item-price {
+    color: #6b7280;
+  }
+  
+  .shipping-info {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .no-orders {
+    text-align: center;
+    color: #6b7280;
+  }
+
+  /* Previous CSS content remains the same, with this updated animal-image section */
+
+.animal-image {
+    width: 100%; /* Full width of its container */
+    height: 250px; /* Controlled height */
+    max-height: 250px; /* Maximum height */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    object-position: center; /* Centers the image within the container */
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Optional variations for different image sizes */
+  .animal-image-small {
+    height: 150px;
+    max-height: 150px;
+  }
+  
+  .animal-image-thumbnail {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%; /* Circular image option */
+    object-fit: cover;
+  }
+  
+  /* Responsive image sizing */
+  @media (max-width: 768px) {
+    .animal-image {
+      height: 200px; /* Slightly smaller on smaller screens */
+    }
+  }
