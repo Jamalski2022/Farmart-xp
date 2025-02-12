@@ -34,13 +34,13 @@ const Item = (props) => {
             }}
           />
         </Link>
-        <button 
+        {/* <button 
           className="add-to-cart-button"
           onClick={handleAddToCart}
           aria-label={`Add ${props.name} to cart`}
         >
           Add to Cart
-        </button>
+        </button> */}
       </div>
       <p className="item-name">{props.name}</p>
       <div className="item-prices">

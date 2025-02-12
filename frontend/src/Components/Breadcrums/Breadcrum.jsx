@@ -3,7 +3,7 @@
 // Breadcrum.jsx
 import React from 'react'
 import './Breadcrum.css'
-import arrow_icon from '../assets/ui-pattern.png'
+import arrow_icon from '../assets/arrow-angle-pointing-to-right.png'
 
 const Breadcrum = ({ product }) => {
   if (!product) {
