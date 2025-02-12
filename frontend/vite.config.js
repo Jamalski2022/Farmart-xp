@@ -11,6 +11,7 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 
 export default defineConfig({
+  base: "/Farmart-xp/",
   plugins: [react()],
   resolve: {
     alias: {
