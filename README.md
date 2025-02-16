@@ -232,11 +232,8 @@ VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key
 
    ## SLIDE PRESENTATION
    LINK: https://us.docworkspace.com/d/sIL7d7tQ42crIvQY
-
-## Testing
-
-- Backend: Run `pytest` in the backend directory
-- Frontend: Run `npm test` in the frontend directory
+   ## WEBSITE URL
+   LINK: jamalski2022.github.io/Farmart-xp/
 
 ## License
 
