@@ -230,6 +230,9 @@ VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key
 4. Run tests: `python -m pytest`
 5. Submit a pull request
 
+   ## SLIDE PRESENTATION
+   LINK: https://us.docworkspace.com/d/sIL7d7tQ42crIvQY
+
 ## Testing
 
 - Backend: Run `pytest` in the backend directory
